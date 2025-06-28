@@ -8,4 +8,3 @@ Design a scalable parking lot system that can handle:
 - Entry and exit with ticket generation
 - Fee calculation based on vehicle type and duration
 - Real-time display of available slots
-
