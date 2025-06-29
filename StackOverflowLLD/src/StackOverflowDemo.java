@@ -52,29 +52,29 @@ public class StackOverflowDemo {
         allQuestions.addAll(bob.getQuestionsPosted());
 
         // Step 10: Run SearchService examples
-        System.out.println("\n🔍 Search by keyword 'Java':");
+        System.out.println("\n Search by keyword 'Java':");
         List<Question> keywordResults = SearchService.searchByKeyword(allQuestions, "Java");
         for (Question q : keywordResults) {
             System.out.println("- " + q.getTitle());
         }
 
-        System.out.println("\n🔍 Search by tag 'Spring':");
+        System.out.println("\n Search by tag 'Spring':");
         List<Question> tagResults = SearchService.searchByTag(allQuestions, "Spring");
         for (Question q : tagResults) {
             System.out.println("- " + q.getTitle());
         }
 
-        System.out.println("\n🔍 Search by user 'Alice':");
+        System.out.println("\n Search by user 'Alice':");
         List<Question> userResults = SearchService.searchByUser(allQuestions, "Alice");
         for (Question q : userResults) {
             System.out.println("- " + q.getTitle());
         }
 
         // Step 11: Display answer upvotes and reputation
-        System.out.println("\n📊 Bob's Answer Upvotes: " + a1.getUpVoteCount());
-        System.out.println("⭐ Bob's Reputation: " + bob.getTotalReputation());
+        System.out.println("\n Bob's Answer Upvotes: " + a1.getUpVoteCount());
+        System.out.println("Bob's Reputation: " + bob.getTotalReputation());
 
-        System.out.println("\n📚 Comments on the Answer:");
+        System.out.println("\n Comments on the Answer:");
         for (Comment c : a1.getComments()) {
             System.out.println("- " + c.getCreatedBy().getName() + ": " + c.getContent());
         }
