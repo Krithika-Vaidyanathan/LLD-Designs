@@ -1,7 +1,7 @@
 package components;
 
-import enumTypes.ParkingSlotType;
-import model.Vehicle;
+import src.enumTypes.ParkingSlotType;
+import src.model.Vehicle;
 
 public class ParkingSlot {
     private String slotId;

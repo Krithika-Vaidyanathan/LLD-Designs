@@ -1,6 +1,6 @@
 package components;
 
-import enumTypes.ParkingSlotType;
+import src.enumTypes.ParkingSlotType;
 
 import java.util.ArrayList;
 import java.util.HashMap;

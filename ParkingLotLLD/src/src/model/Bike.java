@@ -1,6 +1,6 @@
-package model;
+package src.model;
 
-import enumTypes.VehicleType;
+import src.enumTypes.VehicleType;
 
 public class Bike extends Vehicle {
     public Bike(String licensePlate) {

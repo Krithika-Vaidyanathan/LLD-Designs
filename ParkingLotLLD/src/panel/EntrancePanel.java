@@ -3,9 +3,9 @@ package panel;
 import components.ParkingFloor;
 import components.ParkingLot;
 import components.ParkingSlot;
-import enumTypes.ParkingSlotType;
-import enumTypes.VehicleType;
-import model.*;
+import src.enumTypes.ParkingSlotType;
+import src.enumTypes.VehicleType;
+import src.model.*;
 
 import java.util.List;
 import java.util.UUID;

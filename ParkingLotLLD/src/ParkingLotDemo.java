@@ -1,8 +1,8 @@
 import components.ParkingFloor;
 import components.ParkingLot;
 import components.ParkingSlot;
-import enumTypes.ParkingSlotType;
-import model.*;
+import src.enumTypes.ParkingSlotType;
+import src.model.*;
 import panel.EntrancePanel;
 import panel.ExitPanel;
 

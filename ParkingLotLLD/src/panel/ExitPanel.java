@@ -2,7 +2,7 @@ package panel;
 
 import components.ParkingRateCalculator;
 import components.ParkingSlot;
-import model.*;
+import src.model.*;
 import strategy.BikeRateStrategy;
 import strategy.CarRateStrategy;
 import strategy.ParkingRateStrategy;
