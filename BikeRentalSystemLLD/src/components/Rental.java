@@ -11,7 +11,8 @@ public class Rental {
     private LocalDateTime endTime;
     private boolean returned;
 
-    public Rental(String rentalId, Product product, Customer customer, LocalDateTime startTime, LocalDateTime endTime) {
+    public Rental(String rentalId, Product product, Customer customer,
+                  LocalDateTime startTime, LocalDateTime endTime) {
         this.rentalId = rentalId;
         this.customer = customer;
         this.startTime = startTime;
@@ -37,5 +38,9 @@ public class Rental {
 
     public Customer getCustomer() {
         return customer;
+    }
+
+    public Product getProduct() {
+        return product;
     }
 }

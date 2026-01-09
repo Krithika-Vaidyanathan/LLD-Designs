@@ -1,10 +1,13 @@
+import Factory.VehicleFactory;
 import components.ParkingFloor;
 import components.ParkingLot;
 import components.ParkingSlot;
 import src.enumTypes.ParkingSlotType;
+import src.enumTypes.VehicleType;
 import src.model.*;
 import panel.EntrancePanel;
 import panel.ExitPanel;
+import strategy.CardPaymentStrategy;
 
 public class ParkingLotDemo {
 
@@ -22,13 +25,17 @@ public class ParkingLotDemo {
         lot.addEntrance("ENT1", ep);
         lot.addExit("EXT1", xp);
 
-        Vehicle myCar = new Car("TN-10-1234");
+        //Vehicle myCar = new Car("TN-10-1234");
+        Vehicle myCar = VehicleFactory.createVehicle(
+                VehicleType.CAR,
+                "TN-10-1234"
+        );
         Ticket ticket = ep.generateTicket(myCar, lot);
         System.out.println("Ticket issued for: " + ticket.getVehicle().getType() + " - " + myCar.getLicensePlate());
         floor1.getDisplayBoard().display();
 
         Thread.sleep(1000);
-        xp.processExit(ticket);
-        floor1.getDisplayBoard().display();
+        xp.processExit(ticket, new CardPaymentStrategy());
+       // floor1.getDisplayBoard().display();
     }
 }

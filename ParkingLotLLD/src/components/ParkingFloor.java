@@ -20,7 +20,7 @@ public class ParkingFloor {
         return displayBoard;
     }
 
-    //Check if slot.getSlotType() is in slots map. If yes, return the existing list.
+    //Check if slot.getSlotType() is in slots map. If yes, return the existing list by adding the slot
     //If not, create a new array list, store it in the map, return that list, then add current slot into that list.
     public void addSlot(ParkingSlot slot) {
         slots.computeIfAbsent(slot.getSlotType(), k -> new ArrayList<>()).add(slot);

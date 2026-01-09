@@ -2,11 +2,9 @@ package panel;
 
 import components.ParkingRateCalculator;
 import components.ParkingSlot;
+import components.PaymentProcessor;
 import src.model.*;
-import strategy.BikeRateStrategy;
-import strategy.CarRateStrategy;
-import strategy.ParkingRateStrategy;
-import strategy.TruckRateStrategy;
+import strategy.*;
 
 import java.util.Date;
 
@@ -16,11 +14,14 @@ public class ExitPanel {
         this.id = id;
     }
 
-    public void processExit(Ticket ticket) {
+    public void processExit(Ticket ticket, PaymentStrategy paymentStrategy) {
         ParkingSlot slot = ticket.getSlot();
+        //1. Free the parking slot
         slot.removeVehicle();
+        //2. Calculate duration
         long duration = Math.max(1, (new Date().getTime() - ticket.getEntryTime().getTime()) / (1000 * 60 * 60));
 
+        //3. Select parking rate strategy
         ParkingRateStrategy strategy = switch(ticket.getVehicle().getType()) {
             case CAR -> new CarRateStrategy();
             case BIKE -> new BikeRateStrategy();
@@ -30,5 +31,20 @@ public class ExitPanel {
         ParkingRateCalculator calc = new ParkingRateCalculator(strategy);
         double fee = calc.calculate(duration);
         System.out.println( ticket.getVehicle().getType() + " Vehicle exited. Duration: " + duration + " hours. Fee: Rs." + (int) fee);
+
+
+        // 4. Process payment using strategy
+        PaymentProcessor paymentProcessor = new PaymentProcessor(paymentStrategy);
+        boolean success = paymentProcessor.process(fee);
+
+        if (success) {
+            System.out.println(
+                    ticket.getVehicle().getType() +
+                            " exited. Duration: " + duration +
+                            " hours. Fee: Rs." + (int) fee
+            );
+        } else {
+            System.out.println("Payment failed for ticket: " + ticket.getTicketNumber());
+        }
     }
 }

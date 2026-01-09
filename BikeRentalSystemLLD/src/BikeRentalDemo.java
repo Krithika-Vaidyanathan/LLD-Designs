@@ -15,21 +15,28 @@ public class BikeRentalDemo {
 
         system.addProduct(bike);
         system.addProduct(scooter);
+        system.getAvailableProducts();
 
         //Customer
         Customer customer = new Customer("C1", "Krithika");
 
         //Rental
         LocalDateTime start = LocalDateTime.now();
-        LocalDateTime end = start.plusHours(3);
+        LocalDateTime end = start.plusHours(2);
 
         Rental rental = system.rentProduct("R1", "B1", customer, start, end);
         System.out.println("Balance after rental: $" + customer.getBalance());
-        Thread.sleep(5000);
+        Thread.sleep(2000);
+        //system.getAvailableProducts();
+        system.showProductsRentedByCustomer(customer);
 
         //Choose payment method at runtime
         PaymentProcessor cashPayment = new CashPaymentProcessor();
         system.processPayment(customer, customer.getBalance(), cashPayment);
         System.out.println("Balance after payment: $"+ customer.getBalance());
+
+        Thread.sleep(5000); // customer rides bike
+        system.returnProduct("R1");
+       // system.getAvailableProducts();
     }
 }
