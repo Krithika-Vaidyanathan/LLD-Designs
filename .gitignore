@@ -9,3 +9,6 @@ out/
 #OS files
 .DS_Store
 Thumbs.db
+
+# Ignore all src folders anywhere
+**/src/
